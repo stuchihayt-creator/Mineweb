@@ -18,3 +18,8 @@ if (!username) {
 } else {
     console.log("Logged in as: " + username);
 }
+const text = document.getElementById("welcomeText");
+
+if (text) {
+    text.innerHTML = "👋 Welcome, <b>" + localStorage.getItem("mineweb_username") + "</b>";
+}
