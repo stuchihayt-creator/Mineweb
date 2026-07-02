@@ -1,25 +1,34 @@
-// Username System
+// ===============================
+// MineWeb Username System
+// ===============================
 
 let username = localStorage.getItem("mineweb_username");
 
+// Agar username nahi hai to pucho
 if (!username) {
-    setTimeout(() => {
-        let name = prompt("👋 Welcome to MineWeb!\n\nEnter your username:");
 
-        while (!name || name.trim() === "") {
-            name = prompt("Username cannot be empty!");
-        }
+    username = prompt("👋 Welcome to MineWeb!\n\nEnter your username:");
 
-        localStorage.setItem("mineweb_username", name.trim());
+    while (!username || username.trim() === "") {
+        username = prompt("Username cannot be empty!\n\nEnter your username:");
+    }
 
-        alert("Welcome " + name + "!");
-        location.reload();
-    }, 500);
-} else {
-    console.log("Logged in as: " + username);
+    username = username.trim();
+
+    localStorage.setItem("mineweb_username", username);
+
+    alert("✅ Welcome " + username + "!");
+
 }
-const text = document.getElementById("welcomeText");
 
-if (text) {
-    text.innerHTML = "👋 Welcome, <b>" + localStorage.getItem("mineweb_username") + "</b>";
-}
+// Welcome Text Show
+
+window.onload = function () {
+
+    const welcome = document.getElementById("welcomeText");
+
+    if (welcome) {
+        welcome.innerHTML = "👋 Welcome, <b>" + localStorage.getItem("mineweb_username") + "</b>";
+    }
+
+};
