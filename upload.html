@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload - MineWeb</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<header>
+<h1>📤 Upload</h1>
+<p id="welcomeText"></p>
+</header>
+
+<div class="card">
+
+<label>Title</label>
+<input type="text" id="title" placeholder="Resource Pack Name">
+
+<br><br>
+
+<label>Description</label>
+<textarea id="description" placeholder="Write description"></textarea>
+
+<br><br>
+
+<label>Category</label>
+
+<select id="category">
+<option>Resource Pack</option>
+<option>Addon</option>
+<option>Map</option>
+<option>Shader</option>
+<option>Skin</option>
+</select>
+
+<br><br>
+
+<label>Minecraft Version</label>
+
+<input type="text" id="version" placeholder="1.21.100">
+
+<br><br>
+
+<label>Thumbnail</label>
+
+<input type="file" accept="image/*">
+
+<br><br>
+
+<label>File</label>
+
+<input type="file">
+
+<br><br>
+
+<button>Upload</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
