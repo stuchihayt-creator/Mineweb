@@ -44,3 +44,8 @@ postsDiv.innerHTML+=`
 }
 
 loadPosts();
+
+<div class="actions">
+<button onclick="likePost('${doc.id}')">❤️ Like</button>
+<button onclick="openComments('${doc.id}')">💬 Comments</button>
+</div>
