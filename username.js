@@ -1,55 +1,62 @@
 import { db } from "./firebase.js";
 
 import {
-collection,
-query,
-where,
-getDocs,
-addDoc
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-async function registerUsername(){
+async function registerUsername() {
 
-let username = localStorage.getItem("mineweb_username");
+  let username = localStorage.getItem("mineweb_username");
 
-if(username) return;
+  // Agar username pehle se hai to welcome text dikhao
+  if (username) {
+    const welcome = document.getElementById("welcomeText");
+    if (welcome) {
+      welcome.innerHTML = "👋 Welcome, <b>" + username + "</b>";
+    }
+    return;
+  }
 
-while(true){
+  while (true) {
 
-username = prompt("Enter Username");
+    username = prompt("👤 Enter Username");
 
-if(!username) continue;
+    if (!username) continue;
 
-username = username.trim();
+    username = username.trim();
 
-const q = query(
-collection(db,"users"),
-where("username","==",username)
-);
+    const q = query(
+      collection(db, "users"),
+      where("username", "==", username)
+    );
 
-const snap = await getDocs(q);
+    const snap = await getDocs(q);
 
-if(snap.empty){
+    if (snap.empty) {
 
-await addDoc(collection(db,"users"),{
-username:username
-});
+      await addDoc(collection(db, "users"), {
+        username: username
+      });
 
-localStorage.setItem("mineweb_username",username);
+      localStorage.setItem("mineweb_username", username);
 
-alert("Welcome "+username);
+      alert("✅ Welcome " + username);
 
-location.reload();
+      location.reload();
 
-break;
+      break;
 
-}else{
+    } else {
 
-alert("❌ Username already taken!");
+      alert("❌ Username already taken!");
 
-}
+    }
 
-}
+  }
 
 }
 
